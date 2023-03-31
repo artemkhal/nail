@@ -1,9 +1,9 @@
 package com.khaliullov.love_nail;
 
+import com.khaliullov.love_nail.api.OrderRequest;
 import com.khaliullov.love_nail.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,15 +21,23 @@ public class Controller {
     }
 
     @PostMapping("/")
-    public @ResponseBody void getForm(@RequestParam String name, @RequestParam String select,
-                        @RequestParam String date, @RequestParam String time){
+    public @ResponseBody ResponseEntity<String> getForm(@RequestParam String name,
+                                                        @RequestParam String select,
+                                                        @RequestParam String date,
+                                                        @RequestParam String time,
+                                                        @RequestParam String masterName,
+                                                        @RequestParam String key)
+    {
+
+
+        log.info("----------------");
         log.info(name);
         log.info(select);
         log.info(date);
         log.info(time);
-//        log.info(key);
+        log.info(masterName);
+        log.info(key);
 
-
-
+        return ResponseEntity.ok("{\"success\": true}");
     }
 }

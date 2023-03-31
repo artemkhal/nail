@@ -29,10 +29,8 @@ public class OrderRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    private Customer customer;
-//    private Master master;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
-    private LocalDateTime startDate;
-    private String service;
-    private String comment;
+    private String name;
+    private String select;
+    private String date;
+    private String time;
 }
