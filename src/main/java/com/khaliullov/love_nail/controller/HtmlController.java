@@ -1,18 +1,13 @@
-package com.khaliullov.love_nail;
+package com.khaliullov.love_nail.controller;
 
-import com.khaliullov.love_nail.api.OrderRequest;
-import com.khaliullov.love_nail.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @org.springframework.stereotype.Controller
 @Slf4j
-public class Controller {
+public class HtmlController {
 
-    @Autowired
-    OrderService orderService;
 
 
     @GetMapping("/")
@@ -20,7 +15,7 @@ public class Controller {
         return "index";
     }
 
-    @PostMapping("/")
+    @PostMapping("/post")
     public @ResponseBody ResponseEntity<String> getForm(@RequestParam String name,
                                                         @RequestParam String select,
                                                         @RequestParam String date,
