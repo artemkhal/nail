@@ -1,15 +1,16 @@
-package com.khaliullov.love_nail.service.tgbot;
+package com.khaliullov.love_nail.config;
 
+import com.khaliullov.love_nail.service.TelegramService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
 
 
 @Configuration
-public class AppConfig {
+public class TelegramBeanConfig {
     private final TelegramBotConfig botConfig;
 
-    public AppConfig(TelegramBotConfig botConfig) {
+    public TelegramBeanConfig(TelegramBotConfig botConfig) {
         this.botConfig = botConfig;
     }
 
@@ -19,8 +20,8 @@ public class AppConfig {
     }
 
     @Bean
-    public TelegramBot springWebhookBot(SetWebhook setWebhook, TelegramFacade telegramFacade) {
-        TelegramBot bot = new TelegramBot(telegramFacade, setWebhook);
+    public TelegramBot springWebhookBot(SetWebhook setWebhook, TelegramService telegramService) {
+        TelegramBot bot = new TelegramBot(telegramService, setWebhook);
         bot.setBotToken(botConfig.getBotToken());
         bot.setBotUsername(botConfig.getUserName());
         bot.setBotPath(botConfig.getWebHookPath());

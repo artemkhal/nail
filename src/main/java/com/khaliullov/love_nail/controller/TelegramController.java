@@ -1,6 +1,6 @@
 package com.khaliullov.love_nail.controller;
 
-import com.khaliullov.love_nail.service.tgbot.TelegramBot;
+import com.khaliullov.love_nail.config.TelegramBot;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +21,7 @@ public class TelegramController {
 
     @PostMapping("/")
     public BotApiMethod<?> onUpdateReceived(@RequestBody Update update) {
-        log.info(update.getMessage().getText());
+//        log.info(update.getMessage().getText());
         return telegramBot.onWebhookUpdateReceived(update);
     }
 
