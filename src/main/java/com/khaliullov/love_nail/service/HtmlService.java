@@ -25,6 +25,7 @@ public class HtmlService {
             Master master = masterRepository.findMasterByName(masterName);
             Order order = new Order(name, select, date, time, master, key, null, Status.CONFIRMED);
             orderRepository.save(order);
+            log.info(order.toString());
         }catch (Exception e){
             return ResponseEntity.ok("{\"success\": false}");
         }

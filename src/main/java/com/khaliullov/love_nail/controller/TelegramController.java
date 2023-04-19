@@ -21,7 +21,6 @@ public class TelegramController {
 
     @PostMapping("/")
     public BotApiMethod<?> onUpdateReceived(@RequestBody Update update) {
-//        log.info(update.getMessage().getText());
         return telegramBot.onWebhookUpdateReceived(update);
     }
 

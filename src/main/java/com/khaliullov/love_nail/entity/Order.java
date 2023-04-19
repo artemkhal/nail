@@ -1,16 +1,11 @@
 package com.khaliullov.love_nail.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.khaliullov.love_nail.repo.MasterRepository;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
 
-import java.sql.JDBCType;
 import java.time.*;
 @ComponentScan
 @Entity
@@ -27,8 +22,8 @@ public class Order {
     @JsonProperty
     private String name;
     @JsonProperty
-    @Column(name = "selected_service")
-    private String nameOfService;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Service nameOfService;
     @JsonProperty
     @Column(name = "service_date")
     private LocalDate date;
@@ -39,7 +34,7 @@ public class Order {
     @ManyToOne(cascade = CascadeType.ALL)
     private Master master;
     @JsonProperty
-    private int secretKey;
+    private long secretKey;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Client client;
@@ -55,7 +50,8 @@ public class Order {
 
     public Order(String name, String nameOfService, String date, String time, Master master, int secretKey, Client client, Status status) {
         this.name = name;
-        this.nameOfService = nameOfService;
+        this.nameOfService = new Service(nameOfService);
+
         this.date = convertDate(date);
         this.time = convertTime(time);
         this.master = master;

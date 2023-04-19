@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 public interface MasterRepository extends CrudRepository<Master, Integer> {
     Master findMasterByName(String name);
+    Master findMasterByChatId(long chatId);
+    boolean findByChatId(long chatId);
 }
