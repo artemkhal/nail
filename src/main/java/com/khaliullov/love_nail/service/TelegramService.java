@@ -95,7 +95,7 @@ public class TelegramService {
                 if (dat[1].equals("YES")){
                     return sendMessage(Long.parseLong(meta[1]), "Вы записаны на " + meta[2], null);
                 }else return sendMessage(Long.parseLong(meta[1]), "Мастер не согласова дату, давайте выберем другое время:",
-                        BotKeyboard.getCalendarKeyboard());
+                        BotKeyboard.getCalendarKeyboard(LocalDate.now()));
             }
         }
 
